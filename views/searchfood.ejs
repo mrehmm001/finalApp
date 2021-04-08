@@ -145,7 +145,6 @@
                     <table class="table">
                         <thead>
                             <th>NAME</th>
-                            <th>IMAGE</th>
                             <th>VALUE</th>
                             <th>UNIT</th>
                             <th>CALORIES</th>
@@ -154,12 +153,13 @@
                             <th>PROTEIN</th>
                             <th>SALT</th>
                             <th>SUGAR</th>
+                            <th>AUTHOR</th>
+                            <th>IMAGE</th>
                         </thead>
                         <tbody>
                             <%searchResult.forEach(food =>{ %>
                                 <tr>
                                     <td data-label="NAME"><%=food.name%></td>
-                                    <td data-label="IMAGE"><img src=<%=food.image%> alt="food image"></td>
                                     <td data-label="VALUE"><%=food.value%></td>
                                     <td data-label="UNIT"><%=food.unit%></td>
                                     <td data-label="CALORIES"><%=food.calories%></td>
@@ -168,6 +168,8 @@
                                     <td data-label="PROTEIN"><%=food.protein%></td>
                                     <td data-label="SALT"><%=food.salt%></td>
                                     <td data-label="SUGAR"><%=food.sugar%></td>
+                                    <td data-label="AUTHOR"><%=food.author%></td>
+                                    <td data-label="IMAGE"><img src=<%=food.image%> alt="food image"></td>
                                     
                                 </tr>
                               <% }); %>    
