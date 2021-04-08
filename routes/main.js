@@ -59,13 +59,13 @@ module.exports=(app)=>{
 
 
         if (!errors.isEmpty()) {
-            res.render("/register", { message: "Invalid email or password",type : "reject" , username:req.session.username});
+            res.render("register.ejs", { message: "Invalid email or password",type : "reject" , username:req.session.username});
             return;
         }
 
         MongoClient.connect(url, (err, client) => {
             if(err) throw err;
-            const db = client.db("calorieBuddy"); //connects to myBookshop db
+            const db = client.db("calorieBuddy"); //connects to calorieBuddy db
             const query1 = {
                 username: account.username,
             }
@@ -144,7 +144,24 @@ module.exports=(app)=>{
       });
     
 
-    app.post("/foodAdded", (req,res)=>{
+    app.post("/foodAdded", redirectLogin,
+        [check("name").not().isEmpty(),
+        check("value").not().isEmpty().isFloat(),
+        check("unit").not().isEmpty(),
+        check("calories").not().isEmpty().isFloat(),
+        check("carbs").not().isEmpty().isFloat(),
+        check("fat").not().isEmpty().isFloat(),
+        check("protein").not().isEmpty().isFloat(),
+        check("salt").not().isEmpty().isFloat(),
+        check("sugar").not().isEmpty().isFloat(),
+        check("image").not().isEmpty(),
+    ] ,(req,res)=>{
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.render("addFood.ejs", { message: "Invalid inputs!",type : "reject" , username:req.session.username});
+        return;
+    }
         const MongoClient = require("mongodb").MongoClient; //get mongoDB
         const url = "mongodb://localhost"; //get mondoDB url
         const query={
@@ -162,7 +179,7 @@ module.exports=(app)=>{
         }
 
         MongoClient.connect(url, (err, client)=>{
-            const db = client.db("calorieBuddy"); //connects to myBookshop db
+            const db = client.db("calorieBuddy"); //connects to calorieBuddy db
             db.collection("food").insertOne(query, (err, result)=>{
                 if(err)throw err;
                 res.render("addFood.ejs",{message: "Food added!", type : "accept", username:req.session.username});
@@ -171,19 +188,19 @@ module.exports=(app)=>{
     });
 
  //searchresult page
-    app.post("/foodSearched", (req, res) => {
-        //returns results of books based off search keyword
+    app.get("/foodSearched", (req, res) => {
+        //returns results of food based off search keyword
         var MongoClient = require("mongodb").MongoClient;
         var url = "mongodb://localhost";
-        let searchWord = req.sanitize(req.body.name.trim()); //retrieve keyword and store it in the keyword variable
+        let searchWord = req.sanitize(req.query.name.trim()); //retrieve keyword and store it in the keyword variable
         if(searchWord==null){
             searchWord="";
         }
         MongoClient.connect(url, searchWord, (err, client) => {
         //connects to database
         if (err) throw err; //error handling
-        var db = client.db("calorieBuddy"); //connects to myBookshop db
-        //retrieves list of books from books collections with the help of rejex escape to prevent a few bugs, stores the results in an object array called results
+        var db = client.db("calorieBuddy"); //connects to calorieBuddy db
+        //retrieves list of food from foood collections with the help of rejex escape to prevent a few bugs, stores the results in an object array called results
         db.collection("food")
             .find({ name: { $regex: escapeRegExp(searchWord), $options: "i" } })
             .toArray((findErr, results) => {
@@ -204,19 +221,19 @@ module.exports=(app)=>{
 
 
      //searchresult page for updateFood page
-     app.post("/updateFoodSearched", (req, res) => {
-        //returns results of books based off search keyword
+     app.get("/updateFoodSearched", redirectLogin,(req, res) => {
+        //returns results of food based off search keyword
         var MongoClient = require("mongodb").MongoClient;
         var url = "mongodb://localhost";
-        let searchWord = req.sanitize(req.body.name.trim()); //retrieve keyword and store it in the keyword variable
+        let searchWord = req.sanitize(req.query.name.trim()); //retrieve keyword and store it in the keyword variable
         if(searchWord==null){
             searchWord="";
         }
         MongoClient.connect(url, searchWord, (err, client) => {
         //connects to database
             if (err) throw err; //error handling
-            var db = client.db("calorieBuddy"); //connects to myBookshop db
-            //retrieves list of books from books collections with the help of rejex escape to prevent a few bugs, stores the results in an object array called results
+            var db = client.db("calorieBuddy"); //connects to calorieBuddy db
+            //retrieves list of food from food collections with the help of rejex escape to prevent a few bugs, stores the results in an object array called results
             db.collection("food")
                 .find({ name: { $regex: escapeRegExp(searchWord), $options: "i" } })
                 .toArray((findErr, results) => {
@@ -233,7 +250,29 @@ module.exports=(app)=>{
         });
     });
 
-    app.post("/updateFood", (req,res)=>{
+
+
+    app.post("/updateFood", redirectLogin,  [
+        check("name").not().isEmpty(),
+        check("value").not().isEmpty().isFloat(),
+        check("unit").not().isEmpty(),
+        check("fat").not().isEmpty().isFloat(),
+        check("carbs").not().isEmpty().isFloat(),
+        check("calories").not().isEmpty().isFloat(),
+        check("protein").not().isEmpty().isFloat(),
+        check("salt").not().isEmpty().isFloat(),
+        check("sugar").not().isEmpty().isFloat(),
+        check("image").not().isEmpty(),
+      ] ,(req,res)=>{
+
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.render("updateFood.ejs" , { message: "Invalid inputs!",type : "reject", username:req.session.username, searchResult: null, keyword: null});
+            return;
+        }
+
+
+
         var MongoClient = require("mongodb").MongoClient;
         var url = "mongodb://localhost";
         var author = req.body.author;
@@ -241,7 +280,7 @@ module.exports=(app)=>{
             MongoClient.connect(url, (err, client) => {
                 //connects to database
                 if (err) throw err; //error handling
-                var db = client.db("calorieBuddy"); //connects to myBookshop db
+                var db = client.db("calorieBuddy"); //connects to calorieBuddy db
                 let query={
                     name:req.body.name,
                     value: req.body.value,
@@ -253,7 +292,11 @@ module.exports=(app)=>{
                     sugar: req.body.sugar,
                     image: req.body.image
                 }
-                db.collection("food").updateOne({"author":author}, {$set: query}, (err, result)=>{
+                
+                var ObjectId = require('mongodb').ObjectId; 
+                var id = new ObjectId(req.body.id);
+
+                db.collection("food").updateOne({"_id":id}, {$set: query}, (err, result)=>{
                     if(err) throw err;
                     res.render("updateFood.ejs" , {message :req.body.name+" has been updated!" , type:"accept", username:req.session.username, searchResult: null, keyword: null});
 
@@ -267,19 +310,18 @@ module.exports=(app)=>{
     });
 
 
-    app.post("/deleteFood", (req,res)=>{
+    app.post("/deleteFood", redirectLogin,(req,res)=>{
         var MongoClient = require("mongodb").MongoClient;
         var url = "mongodb://localhost";
         var author = req.body.author;
 
         var ObjectId = require('mongodb').ObjectId; 
-        console.log(req.body);
         var id = new ObjectId(req.body.id);
         if(req.session.username==author){
             MongoClient.connect(url, (err, client) => {
                 //connects to database
                 if (err) throw err; //error handling
-                var db = client.db("calorieBuddy"); //connects to myBookshop db
+                var db = client.db("calorieBuddy"); //connects to calorieBuddy db
                 let query={
                     id:req.body.id,
                 }
@@ -302,7 +344,7 @@ module.exports=(app)=>{
         var url = "mongodb://localhost";
         MongoClient.connect(url, (err, client) => {
             if(err) throw err;
-            var db = client.db("calorieBuddy"); //connects to myBookshop db
+            var db = client.db("calorieBuddy"); //connects to calorieBuddy db
             db.collection("food").find().toArray((err,result)=>{
                 if(err) throw err;
                 res.render("listFood.ejs" , {message : "", username:req.session.username, searchResult: result});

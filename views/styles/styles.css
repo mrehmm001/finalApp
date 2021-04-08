@@ -210,9 +210,9 @@ body{
     invert(80%) sepia(50%) hue-rotate(120deg); 
     width: 100px;
 }
-/* .infoBoxWrapper :not(:last-child){
-    margin-right: 10px;
-} */
+.infoButton{
+    color: white;
+}
 
 .infoBox:hover{
     background-color: rgb(7, 7, 7);
@@ -330,7 +330,7 @@ nav .links a{
 }
 
 nav .links a:hover{
-    color: #0035a8b0;
+    color: #eef118b0;
     border-radius: 32px;
 }
 
@@ -418,6 +418,7 @@ nav .links a:hover{
 
 .header .contentContainer .headerInfo h3{
     font-size: var(--largeText);
+    text-align: center;
 }
 
 .header .contentContainer .headerInfo a{
@@ -456,25 +457,7 @@ nav .links a:hover{
 
 
 
-.row{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    background-color: #14213dee;
-}
 
-
-.column{
-    flex: 1;
-    color: white;
-}
-.columnLabels{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    background-color: #0d1422ee;
-    
-}
 
 
 

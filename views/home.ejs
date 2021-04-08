@@ -98,7 +98,6 @@
                 <a href="/logOut" class="logout">Sign out</a>
 
             <% }else{ %>   
-                <% console.log(username) %> 
                 <a href="/login" class="login">Log in</a>
                 <div class="dividerLine"></div>
                 <a href="/register" class="register">Sign up</a>
@@ -121,28 +120,38 @@
 
         
         <img src="./assets/background.jpg" alt="background" class="background">
+
         <div class="contentContainer">
-  
-            <!-- <div class="part1"></div>
-            <div class="part2"></div> -->
+
+            <% if(username==null){ %> 
             <div class="headerInfo">
-                <h3>Consectetur adipiscing elit, sed .</h3>
-                <p>quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                <a href="" class="button">GET STARTED!</a><br>
-                <a href="#">Already have an account? Login</a>
+                <h3>Welcome to Goldories!</h3>
+                <p>A calorie counter website designed by Muneeb.</p>
+                <a href="/register" class="button">GET STARTED!</a><br>
+                <a href="/login">Already have an account? Login</a>
 
 
             </div>
-
+            <% }else{ %> 
+                <div class="headerInfo">
+                    <h3>Welcome <%=username%></h3>
+                    <p>A calorie counter website designed by Muneeb.</p>
+                    <a href="/addFood" class="button">ADD FOOD!</a><br>
+                    <a href="/listFood">Show me list food page</a>
+    
+    
+                </div>
+            
+            <% } %> 
 
         </div>
     </section>
     <section class="section2">
         <div class="searchRecipes">
-            <form action="#">
-                <p class="title">ducimus qui blanditiis praesentium </p>
-                <p>distinctio. Nam libero tempore, cum soluta nobis est eligendi optio.</p>
-                <input class = "search" type="text" name="search" placeholder="Search for recipes">
+            <form method="GET" action="/foodSearched">
+                <p class="title">SEARCH IT</p>
+                <p>Search for any food you want</p>
+                <input class = "search" type="text" name="name" placeholder="Search for recipes">
             </form>
         </div>
 
@@ -151,19 +160,25 @@
     <section class="section3">
         <div class="sectionWrapper">
             <div class="infoBoxWrapper">
-                <div class="infoBox">
-                    <img src="./assets/salad.png" alt="">
-                    <p class="infoHeader">perspiciatis quidem?</p>                    <a href="" class="infoButton"></a>
+                <div class="infoBox">          
+                    <a href="/addFood" class="infoButton">
+                        <img src="./assets/salad.png" alt="">
+                        <p class="infoHeader">Have food in mind you wish to add here?</p>          
+                    </a>
 
                 </div>
                 <div class="infoBox">
-                    <img src="./assets/update.png" alt="">
-                    <p class="infoHeader">perspiciatis quidem?</p>                    <a href="" class="infoButton"></a>
+                    <a href="/updateFood" class="infoButton">
+                        <img src="./assets/update.png" alt="">
+                        <p class="infoHeader">Want to edit/delete food?</p>
+                    </a>                    
 
                 </div>
-                <div class="infoBox">
-                    <img src="./assets/files.png" alt="">
-                    <p class="infoHeader">perspiciatis quidem?</p>                    <a href="" class="infoButton"></a>
+                <div class="infoBox">              
+                    <a href="/listFood" class="infoButton">
+                        <img src="./assets/files.png" alt="">
+                        <p class="infoHeader">Want to see the list of all foods?</p>      
+                    </a>
 
                 </div>
 

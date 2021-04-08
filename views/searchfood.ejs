@@ -86,7 +86,6 @@
 
     <div class="nav-top">
         <div class="logo">
-            <!-- <img src="./assets/logo.png" alt="logo"> -->
             <h3><b>GOLDORIES<b></h3>
         </div>
         <div class="links">
@@ -121,12 +120,11 @@
         <img src="./assets/background3.jpg" alt="background" class="background">
         <p class="title">SEARCH FOR FOOD</p>
         <div class="content">
-            <!-- <div class="part1"></div>
-            <div class="part2"></div> -->
+ 
             <div class="contentWrapper">
                 <div class="fixedWidthContainer">
-                    <p class="title">IDK LOREM EPSDV DFE.</p>
-                    <form method = "POST" action="/foodSearched">
+                    <p class="title">Search for food here</p>
+                    <form method = "GET" action="/foodSearched">
                         <input class="textbox" type="text" name="name" id="name" placeholder="Search here">
                         <div class="buttonWrapper">
                             <input class="submit" type="submit" value="SEARCH IT!">
@@ -140,11 +138,10 @@
             </div>
 
   
-<!-- 
-            <div class="contentWrapper"> -->
+
 
                 <% if(searchResult!=null){ %>
-                    <!-- <p class="label">Searched for: <%= keyword %> </p> -->
+    
                     <table class="table">
                         <thead>
                             <th>NAME</th>
@@ -182,8 +179,7 @@
                 <% } %>   
 
                 
-                
-            <!-- </div> -->
+
 
 
         </div>
