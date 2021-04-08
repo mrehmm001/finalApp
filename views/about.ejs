@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>About</title>
+</head>
+<body>
+
+    <section class="header">
+    <div class="responsiveNavWrapper">
+        <div class="hamburgerIcon">
+            <!-- <img src="./assets/menu.png" alt=""> -->
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="responsiveNav">
+            <div class="backFilter"></div>
+            <div class="responsiveNavLinksWrapper">
+                <div class="responsiveNavTop">
+                    <div class="logo">
+                        <h3><b>GOLDORIES<b></h3>
+                    </div>
+
+                    <% if(username!=null){ %> 
+                        <p>Hello! <%=username  %> </p>
+        
+                    <% }else{ %>   
+                        <p>guest</p>
+                    <% } %> 
+               
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinks">
+                    <a  href="/">HOME</a>
+                    <a id = "selected" href="/about">ABOUT</a>
+                    <a href="/addFood">ADD FOOD</a>
+                    <a href="/searchFood">SEARCH FOOD</a>
+                    <a href="/updateFood">UPDATE FOOD</a>
+                    <a href="/listFood">LIST FOOD</a>
+                    <a href="/api">API</a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinksBottom">
+                    <% if(username!=null){ %> 
+                        <a href="/logOut" class="logout">Sign out</a>
+        
+                    <% }else{ %>   
+                        <a href="/login">LOGIN</a>
+                        <a href="/register">SIGN UP</a>
+                    <% } %> 
+
+      
+                </div>
+
+            </div>   
+
+        </div>
+ 
+    </div>    
+
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDORIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+    <nav>
+        <div class="links">
+            <a  href="/">HOME</a>
+            <a id = "selected" href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="/searchFood">SEARCH FOOD</a>
+            <a href="/updateFood">UPDATE FOOD</a>
+            <a href="/listFood">LIST FOOD</a>
+            <a href="/api">API</a>
+        </div>
+
+    </nav>
+
+    <p class="title" >ABOUT US</p>
+        
+        <img src="./assets/background2.jpg" alt="background" class="background">
+        <div class="content">
+  
+            <!-- <div class="part1"></div>
+            <div class="part2"></div> -->
+
+            <div class="contentWrapper">
+                <header>
+                    <p class="company_name">GOLDERIES</p>
+                    <p class="title" style="text-decoration: none;">ABOUT THE COMPANY</p>
+                </header>
+            
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Et pharetra pharetra massa massa ultricies mi quis hendrerit. Aliquet risus feugiat in ante metus dictum at tempor commodo. Mi ipsum faucibus vitae aliquet nec ullamcorper.</p>    
+                <p>Lacus luctus accumsan tortor posuere ac ut. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Dui accumsan sit amet nulla facilisi morbi. Molestie at elementum eu facilisis sed. Blandit libero volutpat sed cras ornare. Varius quam quisque id diam vel quam elementum. Condimentum mattis pellentesque id nibh. </p>    
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada. Libero volutpat sed cras ornare arcu. Pretium nibh ipsum consequat nisl vel pretium.
+                </p>    
+                <p>Elit eget gravida cum sociis natoque penatibus et. Ac tincidunt vitae semper quis lectus nulla at volutpat diam. Massa sed elementum tempus egestas sed. Sed velit dignissim sodales ut eu.</p>    
+
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+    <script src="./app.js"></script>
+    <footer>
+    </footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

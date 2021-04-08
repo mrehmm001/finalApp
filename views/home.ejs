@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Home</title>
+</head>
+<body>
+    <% if(message!=""){ %>
+        <% if(type=="accept"){ %>  
+            <div style="background-color: green" class="toast">
+                <img src="./assets/check.png" alt="check" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+
+        <% }else{ %>
+            <div style="background-color: red" class="toast">
+                <img src="./assets/exclamation-mark.png" alt="exclamation-mark" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+            
+        <% } %>  
+    <% } %>
+    <section class="header">
+    <div class="responsiveNavWrapper">
+        <div class="hamburgerIcon">
+            <!-- <img src="./assets/menu.png" alt=""> -->
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="responsiveNav">
+            <div class="backFilter"></div>
+            <div class="responsiveNavLinksWrapper">
+                <!-- <div class="hamburgerIcon">
+                    <img src="./assets/menu.png" alt="">
+                </div> -->
+                <div class="responsiveNavTop">
+                    <div class="logo">
+                        <h3><b>GOLDORIES<b></h3>
+                    </div>
+
+                    <% if(username!=null){ %> 
+                        <p>Hello! <%=username  %> </p>
+        
+                    <% }else{ %>   
+                        <p>guest</p>
+                    <% } %> 
+               
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinks">
+                    <a id = "selected" href="#">HOME</a>
+                    <a href="/about">ABOUT</a>
+                    <a href="/addFood">ADD FOOD</a>
+                    <a href="/searchFood">SEARCH FOOD</a>
+                    <a href="/updateFood">UPDATE FOOD</a>
+                    <a href="/listFood">LIST FOOD</a>
+                    <a href="/api">API</a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinksBottom">
+                    <% if(username!=null){ %> 
+                        <a href="/logOut" class="logout">Sign out</a>
+        
+                    <% }else{ %>   
+                        <a href="/login">LOGIN</a>
+                        <a href="/register">SIGN UP</a>
+                    <% } %> 
+
+      
+                </div>
+
+            </div>   
+
+        </div>
+ 
+    </div>    
+
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDORIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+    <nav>
+        <div class="links">
+            <a id = "selected" href="#">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="/searchFood">SEARCH FOOD</a>
+            <a href="/updateFood">UPDATE FOOD</a>
+            <a href="/listFood">LIST FOOD</a>
+            <a href="/api">API</a>
+        </div>
+
+    </nav>
+
+
+        
+        <img src="./assets/background.jpg" alt="background" class="background">
+        <div class="contentContainer">
+  
+            <!-- <div class="part1"></div>
+            <div class="part2"></div> -->
+            <div class="headerInfo">
+                <h3>Consectetur adipiscing elit, sed .</h3>
+                <p>quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <a href="" class="button">GET STARTED!</a><br>
+                <a href="#">Already have an account? Login</a>
+
+
+            </div>
+
+
+        </div>
+    </section>
+    <section class="section2">
+        <div class="searchRecipes">
+            <form action="#">
+                <p class="title">ducimus qui blanditiis praesentium </p>
+                <p>distinctio. Nam libero tempore, cum soluta nobis est eligendi optio.</p>
+                <input class = "search" type="text" name="search" placeholder="Search for recipes">
+            </form>
+        </div>
+
+    </section>
+
+    <section class="section3">
+        <div class="sectionWrapper">
+            <div class="infoBoxWrapper">
+                <div class="infoBox">
+                    <img src="./assets/salad.png" alt="">
+                    <p class="infoHeader">perspiciatis quidem?</p>                    <a href="" class="infoButton"></a>
+
+                </div>
+                <div class="infoBox">
+                    <img src="./assets/update.png" alt="">
+                    <p class="infoHeader">perspiciatis quidem?</p>                    <a href="" class="infoButton"></a>
+
+                </div>
+                <div class="infoBox">
+                    <img src="./assets/files.png" alt="">
+                    <p class="infoHeader">perspiciatis quidem?</p>                    <a href="" class="infoButton"></a>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+    <script src="./app.js"></script>
+    <footer>
+    </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDERIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+
+    <nav>
+        <div class="links">
+            <a href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="#">SEARCH FOOD</a>
+            <a href="#">UPDATE FOOD</a>
+            <a href="#">LIST FOOD</a>
+            <a href="#">API</a>
+        </div>
+
+    </nav>
+    <header>
+        <p class="title">REGISTER</p>
+    </header>
+
+
+    <div class="content">
+        <% if(message!=""){ %>
+            <% if(type=="accept"){ %>  
+                <p style="background-color: green" class="feedback"><%=message %> </p>
+            <% }else{ %>
+                <p style="background-color: red" class="feedback"><%=message %> </p>
+            <% } %>  
+        <% } %>
+        <div class="formContainer">
+            <div class="fixedWidthContainer">
+                <form method="POST" action="/register_submitted">
+                    <p class="title">REGISTER</p>
+                    <input class="textbox" type="text" name="firstname" id="firstname" placeholder="firstname" required>
+                    <input class="textbox" type="text" name="lastname" id="lastname" placeholder="lastname" required>
+                    <input class="textbox" type="text" name="username" id="username" placeholder="username" required>
+                    <input class="textbox" type="password" name="password" id="password" placeholder="password" required>
+                    <input class="textbox" type="email" name="email" id="email" placeholder="email" required>
+                    <div class="buttonWrapper">
+                        <input class="submit" type="submit" value="REGISTER!">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

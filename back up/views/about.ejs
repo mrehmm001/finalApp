@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>About</title>
+</head>
+<body>
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDERIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+
+    <nav>
+        <div class="links">
+            <a  href="/">HOME</a>
+            <a id = "selected" href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="#">SEARCH FOOD</a>
+            <a href="#">UPDATE FOOD</a>
+            <a href="#">LIST FOOD</a>
+            <a href="#">API</a>
+        </div>
+
+    </nav>
+
+
+    <div class="content">
+        <header>
+            <p class="company_name">GOLDERIES</p>
+            <p class="title">ABOUT THE COMPANY</p>
+        </header>
+    
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Et pharetra pharetra massa massa ultricies mi quis hendrerit. Aliquet risus feugiat in ante metus dictum at tempor commodo. Mi ipsum faucibus vitae aliquet nec ullamcorper.</p>    
+        <p>Lacus luctus accumsan tortor posuere ac ut. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Dui accumsan sit amet nulla facilisi morbi. Molestie at elementum eu facilisis sed. Blandit libero volutpat sed cras ornare. Varius quam quisque id diam vel quam elementum. Condimentum mattis pellentesque id nibh. </p>    
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada. Libero volutpat sed cras ornare arcu. Pretium nibh ipsum consequat nisl vel pretium.
+        </p>    
+        <p>Elit eget gravida cum sociis natoque penatibus et. Ac tincidunt vitae semper quis lectus nulla at volutpat diam. Massa sed elementum tempus egestas sed. Sed velit dignissim sodales ut eu.</p>    
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+:root {
+    --black: #000000;
+    --oxfordBlue: #14213D;
+    --orangeWeb: #FCA311;
+    --platinum: #E5E5E5;
+    --selected: #002F94;
+    --smallText:15px;
+    --mediumText:30px;
+    --largeText:40px;
+    --thinWeight: 300;
+    --defaultMargin: 0px 350px 0px 350px;
+    --defaultMarginLeft:350px;
+    --defaultMarginRight:350px;
+    --maxWdiths:   2000px;
+    --defaultWidth:  980px;
+
+
+
+
+  }
+
+
+  /* UNIVERSAL STYLING */
+
+h1 , h2, h3, h4, h5, h6, a{
+     margin: 0px;
+     text-decoration: none;
+ }
+
+header{
+    height: 500px;
+
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+}
+
+.background-image{
+    margin: 0px;
+    position:relative;
+    z-index: -1;
+}
+
+.background-image image{
+    object-fit: cover;
+}
+
+.header-content{
+    position: absolute;
+
+}
+
+
+
+
+/* NAV TOP */
+.nav-top{
+    display: flex;
+    flex-direction: row;
+    margin:40px var(--defaultMarginLeft) 40px var(--defaultMarginLeft) ;
+    margin: auto;
+    width: var(--defaultWidth);
+    
+
+}
+
+.nav-top .logo{
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+    max-width: var(--maxWdiths);
+}
+
+.nav-top .links{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    font-size: var(--smallText);
+    text-decoration: none;
+    align-items: center;
+    text-align: center;
+    
+    
+}
+
+.nav-top .links a{
+    text-decoration: none;
+    color:black;
+    font-weight: var(--thinWeight);
+    margin: 0px 20px 0px 20px;
+}
+
+.nav-top .links .dividerLine{
+    width: 1px;
+    height: 40px;
+    margin: 10px;
+    background-color: #000000;
+}
+
+.logo h3{
+
+    left: 100px;
+    font-style: normal;
+    font-size: var(--mediumText);
+    line-height: 56px;
+    margin: 0px;
+
+
+    color: #000000;
+}
+
+
+
+
+/* NAV */
+nav{
+    
+}
+nav .links{
+    width: var(--defaultWidth);
+    display: flex;
+    flex-direction: row;
+    max-width: var(--maxWdiths);
+    margin: var(--defaultMargin);
+    margin: auto;
+}
+nav .links a{
+    padding: 20px 0px 20px 0px;
+    flex:1;
+    text-decoration: none;
+    
+    text-align: center;
+    color: white;
+    font-weight: var(--thinWeight);
+}
+
+nav .links #selected{
+
+    background-color: var(--selected);
+    border-radius: 32px;
+}
+
+
+nav .links a{
+    padding: 10px 0px 10px 0px;
+    flex:1;
+    text-decoration: none;
+    font-size: var(--smallText);
+    
+    text-align: center;
+    color: white;
+    font-weight: var(--thinWeight);
+}
+
+nav .links a:hover{
+    color: #0035a8b0;
+    border-radius: 32px;
+}
+
+
+

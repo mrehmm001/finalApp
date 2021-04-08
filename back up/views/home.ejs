@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDERIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+
+    <nav>
+        <div class="links">
+            <a id = "selected" href="#">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="#">SEARCH FOOD</a>
+            <a href="#">UPDATE FOOD</a>
+            <a href="#">LIST FOOD</a>
+            <a href="#">API</a>
+        </div>
+
+    </nav>
+
+    <section class="header">
+        <!-- <div class="background">
+            <div class="part1"></div>
+            <img src="./assets/background.png" alt="background" class="background">
+            <div class="part2"></div>
+        </div> -->
+        <!-- <div class="background">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,288L120,277.3C240,267,480,245,720,197.3C960,149,1200,75,1320,37.3L1440,0L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#007acc;"></path></svg>
+
+        </div> -->
+
+        <div class="contentContainer">
+
+            <div class="part1"></div>
+            <div class="part2"></div>
+            <div class="headerInfo">
+                <h3>Consectetur adipiscing elit, sed .</h3>
+                <p>quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <a href="" class="button">GET STARTED!</a><br>
+                <a href="#">Already have an account? Login</a>
+
+
+            </div>
+            <div class="searchRecipes">
+                <form action="#">
+                    <input class = "search" type="text" name="search" placeholder="Search for recipes">
+                </form>
+            </div>
+
+        </div>
+        <div class="part3"></div>
+    </section>
+
+    <footer>
+    </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <% if(message!=""){ %>
+        <% if(type=="accept"){ %>  
+            <div style="background-color: green" class="toast">
+                <img src="./assets/check.png" alt="check" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+
+        <% }else{ %>
+            <div style="background-color: red" class="toast">
+                <img src="./assets/exclamation-mark.png" alt="exclamation-mark" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+            
+        <% } %>  
+    <% } %>
+
+    <section class="header">
+    <div class="responsiveNavWrapper">
+        <div class="hamburgerIcon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="responsiveNav">
+            <div class="backFilter"></div>
+            <div class="responsiveNavLinksWrapper">
+                <div class="responsiveNavTop">
+                    <div class="logo">
+                        <h3><b>GOLDORIES<b></h3>
+                    </div>
+
+                    <% if(username!=null){ %> 
+                        <p>Hello! <%=username  %> </p>
+        
+                    <% }else{ %>   
+                        <p>guest</p>
+                    <% } %> 
+               
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinks">
+                    <a  href="/">HOME</a>
+                    <a href="/about">ABOUT</a>
+                    <a href="/addFood">ADD FOOD</a>
+                    <a href="/searchFood">SEARCH FOOD</a>
+                    <a href="/updateFood">UPDATE FOOD</a>
+                    <a href="/listFood">LIST FOOD</a>
+                    <a href="/api">API</a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinksBottom">
+                    <% if(username!=null){ %> 
+                        <a href="/logOut" class="logout">Sign out</a>
+        
+                    <% }else{ %>   
+                        <a href="/login">LOGIN</a>
+                        <a href="/register">SIGN UP</a>
+                    <% } %> 
+
+      
+                </div>
+
+            </div>   
+
+        </div>
+ 
+    </div>    
+
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDORIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+    <nav>
+        <div class="links">
+            <a  href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="/searchFood">SEARCH FOOD</a>
+            <a href="/updateFood">UPDATE FOOD</a>
+            <a href="/listFood">LIST FOOD</a>
+            <a href="/api">API</a>
+        </div>
+
+    </nav>
+
+
+        
+        <img src="./assets/background4.jpg" alt="background" class="background">
+        <p class="title">LOG IN</p>
+        <div class="content">
+            <!-- <div class="part1"></div>
+            <div class="part2"></div> -->
+            <div class="contentWrapper">
+                <div class="fixedWidthContainer">
+                    <p class="title">Log into your account</p>
+                    <form method="POST" action="/login_submitted">
+                        <input class="textbox" type="text" name="username" id="username" placeholder="username" required>
+                        <input class="textbox" type="password" name="password" id="password" placeholder="password" required>
+                        <div class="buttonWrapper">
+                            <input class="submit" type="submit" value="LOGIN!">
+                        </div>
+                        <a style="color: white;" href="/register">Don't have an account yet?</a>
+    
+                    </form>
+    
+                </div>
+                
+                
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+    <script src="./app.js"></script>
+    <footer>
+    </footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

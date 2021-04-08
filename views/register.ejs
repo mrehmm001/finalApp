@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Register</title>
+</head>
+<body>
+    <% if(message!=""){ %>
+        <% if(type=="accept"){ %>  
+            <div style="background-color: green" class="toast">
+                <img src="./assets/check.png" alt="check" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+
+        <% }else{ %>
+            <div style="background-color: red" class="toast">
+                <img src="./assets/exclamation-mark.png" alt="exclamation-mark" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+            
+        <% } %>  
+    <% } %>
+
+    <section class="header">
+    <div class="responsiveNavWrapper">
+        <div class="hamburgerIcon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="responsiveNav">
+            <div class="backFilter"></div>
+            <div class="responsiveNavLinksWrapper">
+                <div class="responsiveNavTop">
+                    <div class="logo">
+                        <h3><b>GOLDORIES<b></h3>
+                    </div>
+
+                    <% if(username!=null){ %> 
+                        <p>Hello! <%=username  %> </p>
+        
+                    <% }else{ %>   
+                        <p>guest</p>
+                    <% } %> 
+               
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinks">
+                    <a  href="/">HOME</a>
+                    <a href="/about">ABOUT</a>
+                    <a href="/addFood">ADD FOOD</a>
+                    <a href="/searchFood">SEARCH FOOD</a>
+                    <a href="/updateFood">UPDATE FOOD</a>
+                    <a href="/listFood">LIST FOOD</a>
+                    <a href="/api">API</a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinksBottom">
+                    <% if(username!=null){ %> 
+                        <a href="/logOut" class="logout">Sign out</a>
+        
+                    <% }else{ %>   
+                        <a href="/login">LOGIN</a>
+                        <a href="/register">SIGN UP</a>
+                    <% } %> 
+
+      
+                </div>
+
+            </div>   
+
+        </div>
+ 
+    </div>    
+
+    <div class="nav-top">
+        <div class="logo">
+            <!-- <img src="./assets/logo.png" alt="logo"> -->
+            <h3><b>GOLDORIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+    <nav>
+        <div class="links">
+            <a  href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="/searchFood">SEARCH FOOD</a>
+            <a href="/updateFood">UPDATE FOOD</a>
+            <a href="/listFood">LIST FOOD</a>
+            <a href="/api">API</a>
+        </div>
+
+    </nav>
+
+
+        
+        <img src="./assets/background4.jpg" alt="background" class="background">
+        <p class="title">REGISTER PAGE</p>
+        <div class="content">
+            <!-- <div class="part1"></div>
+            <div class="part2"></div> -->
+            <div class="contentWrapper">
+                <div class="fixedWidthContainer">
+                    <form method="POST" action="/register_submitted">
+                        <p class="title">REGISTER</p>
+                        <input class="textbox" type="text" name="firstname" id="firstname" placeholder="firstname" required>
+                        <input class="textbox" type="text" name="lastname" id="lastname" placeholder="lastname" required>
+                        <input class="textbox" type="text" name="username" id="username" placeholder="username" required>
+                        <input class="textbox" type="password" name="password" id="password" placeholder="password" required>
+                        <div class="passwordCheckerWrapper">
+                            <div class="passwordStrengthChecker">
+                                <div class="weak bar"></div>
+                                <div class="fair bar"></div>
+                                <div class="strong bar"></div>
+                                <div class="superStrong bar"></div>
+                            </div>
+                            <b><p class="passwordCheckerMessage"></p></b>
+
+                        </div>
+        
+                        <input class="textbox" type="email" name="email" id="email" placeholder="email" required>
+                        <div class="buttonWrapper">
+                            <input class="submit" type="submit" value="REGISTER!">
+                        </div>
+                       
+                        <a style="color: white;" href="/register">Already have an account?</a>
+    
+                    </form>
+    
+                </div>
+                
+                
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+    <script src="./app.js"></script>
+    <footer>
+    </footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

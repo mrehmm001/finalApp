@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Update Food</title>
+</head>
+<body>
+    <% if(message!=""){ %>
+        <% if(type=="accept"){ %>  
+            <div style="background-color: green" class="toast">
+                <img src="./assets/check.png" alt="check" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+
+        <% }else{ %>
+            <div style="background-color: red" class="toast">
+                <img src="./assets/exclamation-mark.png" alt="exclamation-mark" class="icon">
+                <p ><%=message %> </p>
+                <img src="./assets/close.png" alt="close toast message" class="closeToast">
+            </div>
+            
+        <% } %>  
+    <% } %>
+
+    <div style="background-color: green" class="customToast">
+        <p ><%=message %> </p>
+        <img src="./assets/close.png" alt="close toast message" class="closeToast">
+    </div>
+
+    <section class="header">
+    <div class="responsiveNavWrapper">
+        <div class="hamburgerIcon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="responsiveNav">
+            <div class="backFilter"></div>
+            <div class="responsiveNavLinksWrapper">
+                <div class="responsiveNavTop">
+                    <div class="logo">
+                        <h3><b>GOLDORIES<b></h3>
+                    </div>
+
+                    <% if(username!=null){ %> 
+                        <p>Hello! <%=username  %> </p>
+        
+                    <% }else{ %>   
+                        <p>guest</p>
+                    <% } %> 
+               
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinks">
+                    <a  href="/">HOME</a>
+                    <a href="/about">ABOUT</a>
+                    <a href="/addFood">ADD FOOD</a>
+                    <a  href="/searchFood">SEARCH FOOD</a>
+                    <a id = "selected" href="/updateFood">UPDATE FOOD</a>
+                    <a href="/listFood">LIST FOOD</a>
+                    <a href="#">API</a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="responsiveNavLinksBottom">
+                    <% if(username!=null){ %> 
+                        <a href="/logOut" class="logout">Sign out</a>
+        
+                    <% }else{ %>   
+                        <a href="/login">LOGIN</a>
+                        <a href="/logout">SIGN UP</a>
+                    <% } %> 
+
+      
+                </div>
+
+            </div>   
+
+        </div>
+ 
+    </div>    
+
+    <div class="nav-top">
+        <div class="logo">
+            <h3><b>GOLDORIES<b></h3>
+        </div>
+        <div class="links">
+            <% if(username!=null){ %> 
+                <p>Hello! <%=username  %> </p>
+                <div class="dividerLine"></div>
+                <a href="/logOut" class="logout">Sign out</a>
+
+            <% }else{ %>   
+                <% console.log(username) %> 
+                <a href="/login" class="login">Log in</a>
+                <div class="dividerLine"></div>
+                <a href="/register" class="register">Sign up</a>
+            <% } %> 
+        </div>
+    </div>
+    <nav>
+        <div class="links">
+            <a  href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/addFood">ADD FOOD</a>
+            <a href="/searchFood">SEARCH FOOD</a>
+            <a id = "selected" href="/updateFood">UPDATE FOOD</a>
+            <a href="/listFood">LIST FOOD</a>
+            <a href="/api">API</a>
+        </div>
+
+    </nav>
+
+    <% foodList={} %> 
+    <% selectedRecipe=null %> 
+    <div class="modal-bg">
+        <div class="modal-content">
+            <div class="close">
+                <img src="./assets/close.png" alt="close button">
+            </div>
+            <div class="fixedWidthContainer">
+                <p class="title">Update food for ###.</p>
+                <div class="foodFormWrapper">
+     
+                    <form method = "POST" action="/updateFood">
+                        <input style="display: none;" class="id" type="text" name="id" id="id">
+                        <input style="display: none;" class="author" type="text" name="author" id="author">
+                        <div class="textBoxWrapper">
+                            <label for="name">Name: </label>
+                            <input class="textbox" type="text" name="name" id="name" placeholder="Name">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="value">Value: </label>
+                            <input class="textbox" type="text" name="value" id="value" placeholder="Value">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="unit">Unit: </label>
+                            <input class="textbox" type="text" name="unit" id="unit" placeholder="Unit">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="calories">Calories : </label>
+                            <input class="textbox" type="text" name="calories" id="calories" placeholder="Calories">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="carbs">Carbs: </label>
+                            <input class="textbox" type="text" name="carbs" id="carbs" placeholder="Carbs">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="fat">Fat: </label>
+                            <input class="textbox" type="text" name="fat" id="fat" placeholder="Fat">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="protein">Protein: </label>
+                            <input class="textbox" type="text" name="protein" id="protein" placeholder="Protein">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="salt">Salt: </label>
+                            <input class="textbox" type="text" name="salt" id="salt" placeholder="Salt">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="sugar">Sugar: </label>
+                            <input class="textbox" type="text" name="sugar" id="sugar" placeholder="Sugar">
+                        </div>
+                        <div class="textBoxWrapper">
+                            <label for="imageURL">Image URL: </label>
+                            <input class="textbox" type="text" name="image" id="image" placeholder="image URL">
+                        </div>
+                        <div class="buttonWrapper">
+                            <input class="submit" type="submit" value="UPDATE IT!">
+                        </div>
+
+                    </form>
+                    <div class="imageWrapper">
+                        <img class= "foodImage" src="" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="modal-bg2">
+        <div class="modal-content">
+            <div class="close">
+                <img src="./assets/close.png" alt="close button">
+            </div>
+            <div class="fixedWidthContainer">
+                <form method = "POST" action="/deleteFood">
+                    <input style="display: none;" class="id" type="text" name="id" id="id">
+                    <input style="display: none;" class="author" type="text" name="author" id="author">
+                    <input style="display: none;" class="name" type="name" name="name" id="name">
+                    <p class="title">You sure you want to delete ###?.</p>
+                    <div class="buttonWrapper">
+                        <div id = "cancel"class="button">cancel</div>
+                        
+                        <input id = "delete" class="button" type="submit" value="delete">
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div> 
+
+
+
+
+        
+        <img src="./assets/background3.jpg" alt="background" class="background">
+        <p class="title">UPDATE / DELETE FOOOD</p>
+        <div class="content">
+            <div class="contentWrapper">
+                <div class="fixedWidthContainer">
+                    <p class="title">IDK LOREM EPSDV DFE.</p>
+                    <form method = "POST" action="/updateFoodSearched">
+                        <p class="title">Search for food to update.</p>
+                        <input class="textbox" type="text" name="name" id="name" placeholder="Search here">
+                        <div class="buttonWrapper">
+                            <input class="submit" type="submit" value="SEARCH IT!">
+                        </div>
+                    </form>
+
+                    <% if(searchResult!=null){ %>
+                        <p class="label">Searched for: <%= keyword %> </p>
+                        <%searchResult.forEach(food =>{ %>
+                            <% foodList[food._id]=food %> 
+                            <div id=<%=food._id %>  class="recipeContainer">
+                                <div class="name"><%=food.name  %> </div>
+                                <div class="edit"><img src="./assets/edit.png" alt="edit"></div>
+                                <div class="delete"><img src="./assets/delete.png" alt="delete"></div>              
+                            </div>
+                        <% }); %>    
+                    <% } %>   
+    
+                </div>
+                
+                
+            </div>
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+    <script>
+        var recipeList = <%- JSON.stringify(foodList) %>
+        document.querySelectorAll(".edit").forEach(edit =>{
+            edit.addEventListener("click",()=>{
+                var parentNode = edit.parentNode;
+                var id = parentNode.id;
+                
+                if(document.querySelector(".links p").innerHTML.replace("Hello! ","").trim()==recipeList[id].author){
+                    document.querySelector(".modal-bg").style.display="flex";
+                    document.querySelector(".foodImage").src = recipeList[id].image
+                    document.querySelector(".id").value = id;
+                    document.querySelector(".author").value=recipeList[id].author
+                    document.querySelector(".modal-content .title").innerHTML="Update food for "+recipeList[id].name
+                    document.querySelector(".modal-content #name").value=recipeList[id].name
+                    document.querySelector(".modal-content #value").value=recipeList[id].value
+                    document.querySelector(".modal-content #unit").value=recipeList[id].unit
+                    document.querySelector(".modal-content #calories").value=recipeList[id].calories
+                    document.querySelector(".modal-content #carbs").value=recipeList[id].carbs
+                    document.querySelector(".modal-content #fat").value=recipeList[id].fat
+                    document.querySelector(".modal-content #protein").value=recipeList[id].protein
+                    document.querySelector(".modal-content #salt").value=recipeList[id].salt
+                    document.querySelector(".modal-content #sugar").value=recipeList[id].sugar
+                    document.querySelector(".modal-content #image").value=recipeList[id].image==undefined? "" : recipeList[id].image;
+                }else{
+                    createToast("Only "+recipeList[id].author+" can edit this!","reject");
+                }
+
+            });
+            
+        })
+
+        document.querySelectorAll(".delete").forEach(d =>{
+            d.addEventListener("click",()=>{
+                var parentNode = d.parentNode;
+                var id = parentNode.id;
+                if(document.querySelector(".links p").innerHTML.replace("Hello! ","").trim()==recipeList[id].author){
+                    document.querySelector(".modal-bg2").style.display="flex";
+                    document.querySelector(".modal-bg2 .title").innerHTML="You sure you want to delete "+recipeList[id].name+"?"
+                    document.querySelector(".modal-bg2 .id").value = id;
+                    document.querySelector(".modal-bg2 .author").value=recipeList[id].author
+                    document.querySelector(".modal-bg2 .name").value=recipeList[id].name
+                    
+                }else{
+                    createToast("Only "+recipeList[id].author+" can delete this!","reject");
+                }
+
+ 
+     
+            });
+            
+        })
+        function createToast(message, type){
+            var toast = document.querySelector(".customToast");
+            toast.querySelector("p").innerHTML=message;
+            toast.style.visibility="visible";
+            if(type=="accept"){
+                toast.style.background="green";
+            }else{
+                toast.style.background="red";
+            }
+
+            setTimeout(()=>{
+                toast.style.visibility="hidden";
+            },5000)
+
+        }
+
+
+
+
+    </script>
+    <script src="./app.js"></script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
