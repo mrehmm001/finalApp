@@ -47,7 +47,7 @@
 }
 
 .table tbody tr .foodQuantity {
-    width: 30%;
+    width: 50%;
 }
 
 .table tbody tr:nth-child(even){
@@ -581,7 +581,6 @@ header{
     border-radius: 10px;
 }
 .recipeContainer .name{
-    flex: 1;
     color: white;
     align-self: center;
     font-size: 25px;    
@@ -593,6 +592,12 @@ header{
     margin: 0px 10px;
     border-radius: 10px;
     
+}
+.recipeContainer .author{
+    text-align: left;
+    flex: 1;
+    font-style: italic;
+    color: #395daa;
 }
 
 .recipeContainer .edit{
@@ -615,12 +620,13 @@ header{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.692);
-    position: absolute;
+    position: fixed;
     top: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
     display: none;
+    
 }
 
 
@@ -794,6 +800,7 @@ header{
         position:absolute;
         display: flex;
         flex-direction: column;
+        left: 0%;
     }
 
     .responsiveNavLinks{
@@ -801,6 +808,10 @@ header{
         flex-direction: column;
         min-height: 50vh;
         text-align: center;
+    }
+    .responsiveNavWrapper .logo{
+        margin: 10px auto;
+     
     }
     
     .responsiveNavLinks a{
@@ -952,6 +963,10 @@ header{
     }
     .recipeContainer{
         flex-direction: column;
+    }
+
+    .recipeContainer .author{
+        text-align: center;
     }
 
 

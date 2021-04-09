@@ -34,12 +34,19 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
+        <div class="logo">
+            <a href="/">
+                <h3><b>GOLDORIES<b></h3>
+            </a>
+        </div>
         <div class="responsiveNav">
             <div class="backFilter"></div>
             <div class="responsiveNavLinksWrapper">
                 <div class="responsiveNavTop">
                     <div class="logo">
-                        <h3><b>GOLDORIES<b></h3>
+                        <a href="/">
+                            <h3><b>GOLDORIES<b></h3>
+                        </a>
                     </div>
 
                     <% if(username!=null){ %> 
@@ -86,8 +93,9 @@
 
     <div class="nav-top">
         <div class="logo">
-            <!-- <img src="./assets/logo.png" alt="logo"> -->
-            <h3><b>GOLDORIES<b></h3>
+            <a href="/">
+                <h3><b>GOLDORIES<b></h3>
+            </a>
         </div>
         <div class="links">
             <% if(username!=null){ %> 
@@ -127,16 +135,16 @@
                 <div class="fixedWidthContainer">
                     <form method = "POST" action="/foodAdded">
                         <p class="title">ADD FOOD HERE</p>
-                        <input required class="textbox" type="text" name="name" id="name" placeholder="Name">
-                        <input required class="textbox" type="text" name="value" id="value" min="0" placeholder="Value">
-                        <input required class="textbox" type="text" name="unit" id="unit" placeholder="Unit">
-                        <input required class="textbox" type="text" name="calories" id="calories" min="0" placeholder="Calories">
-                        <input required class="textbox" type="text" name="carbs" id="carbs" min="0" placeholder="Carbs">
-                        <input required class="textbox" type="text" name="fat" id="fat" min="0" placeholder="Fat">
-                        <input required class="textbox" type="text" name="protein" id="protein" min="0" placeholder="Protein">
-                        <input required class="textbox" type="text" name="salt" id="salt" min="0" placeholder="Salt">
-                        <input required class="textbox" type="text" name="sugar" id="sugar" min="0" placeholder="Sugar">
-                        <input required class="textbox" type="text" name="image" id="image" min="0" placeholder="image URL">
+                        <input required class="textbox" type="text" name="name" id="name" placeholder="Name e.g Apple Pie">
+                        <input required class="textbox" type="number" step="0.1" name="value" id="value" min="0" placeholder="Value e.g 100">
+                        <input required class="textbox" type="text" name="unit" id="unit" placeholder="Unit e.g gram">
+                        <input required class="textbox" type="number" step="0.1" name="calories" id="calories" min="0" placeholder="Calories e.g 5.0">
+                        <input required class="textbox" type="number" step="0.1" name="carbs" id="carbs" min="0" placeholder="Carbs e.g 5.0">
+                        <input required class="textbox" type="number" step="0.1" name="fat" id="fat" min="0" placeholder="Fat e.g 5.0">
+                        <input required class="textbox" type="number" step="0.1" name="protein" id="protein" min="0" placeholder="Protein e.g 5.0">
+                        <input required class="textbox" type="number" step="0.1" name="salt" id="salt" min="0" placeholder="Salt e.g 5.0">
+                        <input required class="textbox" type="number" step="0.1" name="sugar" id="sugar" min="0" placeholder="Sugar e.g 5.0">
+                        <input required class="textbox" type="text"  name="image" id="image" min="0" placeholder="image URL">
                         <div class="buttonWrapper">
                             <input class="submit" type="submit" value="ADD IT!">
                         </div>
@@ -153,7 +161,7 @@
 
 
 
-    <script src="./app.js"></script>
+    <script src="./script.js"></script>
     <footer>
     </footer>
 

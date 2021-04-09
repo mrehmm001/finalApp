@@ -39,12 +39,19 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
+        <div class="logo">
+            <a href="/">
+                <h3><b>GOLDORIES<b></h3>
+            </a>
+        </div>
         <div class="responsiveNav">
             <div class="backFilter"></div>
             <div class="responsiveNavLinksWrapper">
                 <div class="responsiveNavTop">
                     <div class="logo">
-                        <h3><b>GOLDORIES<b></h3>
+                        <a href="/">
+                            <h3><b>GOLDORIES<b></h3>
+                        </a>
                     </div>
 
                     <% if(username!=null){ %> 
@@ -91,7 +98,9 @@
 
     <div class="nav-top">
         <div class="logo">
-            <h3><b>GOLDORIES<b></h3>
+            <a href="/">
+                <h3><b>GOLDORIES<b></h3>
+            </a>
         </div>
         <div class="links">
             <% if(username!=null){ %> 
@@ -234,6 +243,7 @@
                             <% foodList[food._id]=food %> 
                             <div id=<%=food._id %>  class="recipeContainer">
                                 <div class="name"><%=food.name  %> </div>
+                                <p class="author"> by <%=food.author  %> </p>
                                 <div class="edit"><img src="./assets/edit.png" alt="edit"></div>
                                 <div class="delete"><img src="./assets/delete.png" alt="delete"></div>              
                             </div>
@@ -327,7 +337,7 @@
 
 
     </script>
-    <script src="./app.js"></script>
+    <script src="./script.js"></script>
 
 
 

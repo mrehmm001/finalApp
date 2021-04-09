@@ -56,7 +56,6 @@ function doOpenMenuAnimation(){
     let menuButton = document.querySelector(".hamburgerIcon");
     var navLine = menuButton.querySelectorAll(".line")
     navLine[1].style.visibility="hidden"
-    //navLine[0].style.transform="rotate(20deg);"
     var deg = 25;
     navLine[2].style.transform = "translateY(-250%)";
     navLine[0].style.transform = "translateY(250%)";
@@ -82,19 +81,22 @@ function doOpenMenuCloseAnimation(){
     navLine[0].style.transform = "rotate(0deg)";
 }
 
-var foodHashMap = {};
-document.querySelectorAll(".foodCheckBox").forEach(e=>{
+var foodHashMap = {};//object hashmap, used for collecting all the selected food, and later adding their sum together
+document.querySelectorAll(".foodCheckBox").forEach(e=>{//event listeners for checkbox
     e.addEventListener("click",()=>calculateTotal(e));
 })
 
-document.querySelectorAll(".foodQuantity").forEach(e=>{
+document.querySelectorAll(".foodQuantity").forEach(e=>{//event listeners for foodquantityt
     e.addEventListener("input",()=>calculateTotal(e));
 })
 
 
-function calculateTotal(e){
-    var parent = (e.parentNode.parentNode);
 
+//Function used for calculations
+function calculateTotal(e){
+    var parent = (e.parentNode.parentNode);//this retrieves the row of that specific checkbox, the row will contain all the info such as calories, carbs etc
+
+    //storing the totalValue elements into variables, will be used later
     var totalValue = document.querySelector(".totalValue");
     var totalCalories = document.querySelector(".totalCalories");
     var totalCarbs = document.querySelector(".totalCarbs");
@@ -103,11 +105,15 @@ function calculateTotal(e){
     var totalSalt = document.querySelector(".totalSalt");
     var totalSugar = document.querySelector(".totalSugar");
 
+    //gets the checkbox of that specific row
     var checkBox = parent.querySelector(".foodCheckBox");
+
     if(checkBox.checked){
+
+        //adds the selected food info into the hashmap
+        //each property is converted into float, since they are string originally, this prevents string concatinations
         foodHashMap[parent.id]={
             quantity : parent.querySelector(".quantity .foodQuantity").value,
-            value : parseFloat(parent.querySelector(".value").innerHTML),
             calories : parseFloat(parent.querySelector(".calories").innerHTML),
             carbs : parseFloat(parent.querySelector(".carbs").innerHTML),
             fat : parseFloat(parent.querySelector(".fat").innerHTML),
@@ -117,11 +123,11 @@ function calculateTotal(e){
 
         }
     }else{
-        delete foodHashMap[parent.id];      
+        delete foodHashMap[parent.id];// deletes food object from the hashmap, only if it exists and its checkbox was unchecked      
     }
 
+    //a sum object is used , and later will be used to compute the total sum and display the total results to the front end
     var sumMap={
-        totalValue : 0,
         totalCalories : 0,
         totalCarbs : 0,
         totalFat : 0,
@@ -129,9 +135,11 @@ function calculateTotal(e){
         totalSalt : 0,
         totalSugar : 0
     }
+
+    //iterates through the foodHashmap
     for(i in foodHashMap){
+        //does the sum process
         var foodObj=foodHashMap[i];
-        sumMap.totalValue+=foodObj.value*foodObj.quantity;
         sumMap.totalCalories+=foodObj.calories*foodObj.quantity;
         sumMap.totalCarbs+=foodObj.carbs*foodObj.quantity;
         sumMap.totalFat+=foodObj.fat*foodObj.quantity;
@@ -140,7 +148,8 @@ function calculateTotal(e){
         sumMap.totalSugar+=foodObj.sugar*foodObj.quantity;
 
     }
-    totalValue.innerHTML= Math.round(sumMap.totalValue*100)/100;
+
+    //here the totalValues properties are set to their respective sum values, and the front end is updated
     totalCalories.innerHTML= Math.round(sumMap.totalCalories*100)/100;
     totalCarbs.innerHTML= Math.round(sumMap.totalCarbs*100)/100;
     totalFat.innerHTML= Math.round(sumMap.totalFat*100)/100;
@@ -150,7 +159,6 @@ function calculateTotal(e){
 }
 
 
-const strip=(number)=>parseFloat(number).toPrecision(12);
 
 
 
@@ -243,49 +251,5 @@ function caseChecker(caseCheck, password){
     }
     return false;
 }
-
-
-
-
-// document.querySelectorAll(".foodCheckBox").forEach(e=>{
-//     e.addEventListener("click",()=>{
-//         var parent = (e.parentNode.parentNode);
-//         var totalValue = document.querySelector(".totalValue");
-//         var totalCalories = document.querySelector(".totalCalories");
-//         var totalCarbs = document.querySelector(".totalCarbs");
-//         var totalFat = document.querySelector(".totalFat");
-//         var totalProtein = document.querySelector(".totalProtein");
-//         var totalSalt = document.querySelector(".totalSalt");
-//         var totalSugar = document.querySelector(".totalSugar");
-
-//         var quantity = parent.querySelector(".quantity .foodQuantity").value;
-//         var value = parent.querySelector(".value").innerHTML;
-//         var calories = parent.querySelector(".calories").innerHTML;
-//         var carbs = parent.querySelector(".carbs").innerHTML;
-//         var fat = parent.querySelector(".fat").innerHTML;
-//         var protein = parent.querySelector(".protein").innerHTML;
-//         var salt = parent.querySelector(".salt").innerHTML;
-//         var sugar = parent.querySelector(".sugar").innerHTML;
-//         if(e.checked==true){
-//             totalValue.innerHTML= parseFloat(totalValue.innerHTML)+(parseFloat(value)*quantity);
-//             totalCalories.innerHTML= parseFloat(totalCalories.innerHTML)+(parseFloat(calories)*quantity);
-//             totalCarbs.innerHTML= parseFloat(totalCarbs.innerHTML)+(parseFloat(carbs)*quantity);
-//             totalFat.innerHTML= parseFloat(totalFat.innerHTML)+(parseFloat(fat)*quantity);
-//             totalProtein.innerHTML= parseFloat(totalProtein.innerHTML)+(parseFloat(protein)*quantity);
-//             totalSalt.innerHTML= parseFloat(totalSalt.innerHTML)+(parseFloat(salt)*quantity);
-//             totalSugar.innerHTML= parseFloat(totalSugar.innerHTML)+(parseFloat(sugar)*quantity);
-//         }else{
-//             totalValue.innerHTML= parseFloat(totalValue.innerHTML)-parseFloat(value);
-//             totalCalories.innerHTML= parseFloat(totalCalories.innerHTML)-parseFloat(calories);
-//             totalCarbs.innerHTML= parseFloat(totalCarbs.innerHTML)-parseFloat(carbs);
-//             totalFat.innerHTML= parseFloat(totalFat.innerHTML)-parseFloat(fat);
-//             totalProtein.innerHTML= parseFloat(totalProtein.innerHTML)-parseFloat(protein);
-//             totalSalt.innerHTML= parseFloat(totalSalt.innerHTML)-parseFloat(salt);
-//             totalSugar.innerHTML= parseFloat(totalSugar.innerHTML)-parseFloat(sugar);
-
-//         }
-//     })
-// })
-
 
 

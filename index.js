@@ -15,27 +15,12 @@ var expressSanitizer = require('express-sanitizer');
 const app = express()
 const port = 8000;//port for the web server
 
-app.use(expressSanitizer());
+app.use(expressSanitizer());//lets app use the sanitizer functionality
 
-app.use(express.static('views'));
-
-//mongodb database
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost/calorieBuddy";
-
-//connect to mongodb database
-MongoClient.connect(url, function(err, db) {
-
-  if (err) throw err;
-
-  console.log("Database created!");
-
-  db.close();
-
-});
+app.use(express.static('views'));//this is used so that style.css and other files can be located
 
 
-
+//lets the app use session functionality
 app.use(session({
 	secret:'myLittleSecret',
 	resave: false,
@@ -54,5 +39,5 @@ app.set('views',__dirname + '/views');//setting views directory
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);//setting view render engine
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`listening on port ${port}!`));
 
