@@ -272,8 +272,8 @@
             edit.addEventListener("click",()=>{
                 var parentNode = edit.parentNode;
                 var id = parentNode.id;
-                
-                if(document.querySelector(".links p").innerHTML.replace("Hello! ","").trim()==recipeList[id].author){
+                var user = "<%=username%>";
+                if(user==recipeList[id].author){
                     document.querySelector(".modal-bg").style.display="flex";
                     document.querySelector(".foodImage").src = recipeList[id].image
                     document.querySelector(".id").value = id;
@@ -301,7 +301,8 @@
             d.addEventListener("click",()=>{
                 var parentNode = d.parentNode;
                 var id = parentNode.id;
-                if(document.querySelector(".links p").innerHTML.replace("Hello! ","").trim()==recipeList[id].author){
+                var user = "<%=username%>";
+                if(user==recipeList[id].author){
                     document.querySelector(".modal-bg2").style.display="flex";
                     document.querySelector(".modal-bg2 .title").innerHTML="You sure you want to delete "+recipeList[id].name+"?"
                     document.querySelector(".modal-bg2 .id").value = id;
