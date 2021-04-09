@@ -1,3 +1,5 @@
+
+/* VARIABLES */
 :root {
     --black: #000000;
     --oxfordBlue: #14213D;
@@ -22,6 +24,18 @@
  
 /* UNIVERSAL STYLING 
 ---------------------*/
+
+h1 , h2, h3, h4, h5, h6, a{
+    margin: 0px;
+    text-decoration: none;
+}
+
+
+body{
+  font-family:Verdana, Tahoma, sans-serif;
+  margin: 0px;
+}
+
 
 
 /* TABLE */
@@ -127,16 +141,6 @@
 
 }
 
-h1 , h2, h3, h4, h5, h6, a{
-    margin: 0px;
-    text-decoration: none;
-}
-
-
-body{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 0px;
-}
 
 .contentWrapper{
     background: rgba(0, 0, 0, 0.781);
@@ -339,9 +343,8 @@ nav .links a:hover{
 /* HEADER */
 .header{
 
-    /* background-color: var(--orangeWeb); */
     margin: 0px;
-    /* height: 100%; */
+    height: 100vh;
     width: 100%;
     position: relative;
 
@@ -816,7 +819,12 @@ header{
     
     .responsiveNavLinks a{
         color: white;  
-        margin: auto 0;
+        margin: 30px auto;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .responsiveNavLinks #selected{
+        background-color: var(--selected);
     }
 
 
